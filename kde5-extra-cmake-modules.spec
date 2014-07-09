@@ -1,7 +1,6 @@
 # TODO where to put files and docs of KF5
-%define         _state          stable
-%define		orgname		extra-cmake-modules
-%define         qt5ver           5.2.0
+%define		orgname	extra-cmake-modules
+%define		qt5ver	5.2.0
 
 Summary:	Extra Cmake Modules for KF5
 Name:		kde5-extra-cmake-modules
@@ -9,7 +8,7 @@ Version:	1.0.0
 Release:	0.1
 License:	See COPYING-CMAKE-SCRIPTS
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/frameworks/5.0.0/%{orgname}-%{version}.tar.xz
+Source0:	ftp://ftp.kde.org/pub/kde/stable/frameworks/5.0.0/%{orgname}-%{version}.tar.xz
 # Source0-md5:	a7b9e8756fdc2b3a8518ad9f9d21dfd5
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
@@ -33,7 +32,9 @@ software that uses the CMake build system.
 %package doc
 Summary:	Documentation for ECM
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
+%endif
 
 %description doc
 Documentation for ECM.

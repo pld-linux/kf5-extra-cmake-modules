@@ -14,6 +14,8 @@ URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	sphinx-pdg
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -34,7 +36,9 @@ software that uses the CMake build system.
 %package doc
 Summary:	Documentation for ECM
 Group:		Documentation
-BuildArch:	noarch
+%if "%{_rpmversion}" >= "5"
+BuildArch:     noarch
+%endif
 
 %description doc
 Documentation for ECM.

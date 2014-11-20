@@ -1,16 +1,16 @@
-%bcond_without	tests
+#
+# Conditional build:
+%bcond_without	tests		# build without tests
 
-%define		_state		stable
 %define		orgname		extra-cmake-modules
 %define		kdeframever	5.4
-
 Summary:	Extra Cmake Modules for KF5
-Name:		kf5-extra-cmake-modules
+Name:		kf5-%{orgname}
 Version:	1.4.0
 Release:	1
 License:	BSD
 Group:		Development/Building
-Source0:	http://download.kde.org/%{_state}/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
 # Source0-md5:	a8a8278f5448a584cffec07692ed9f19
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
@@ -25,9 +25,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The Extra CMake Modules package, or ECM, adds to the modules provided
-by CMake, including both ones used by ``find_package()`` to find
-common software and ones that can be used directly in
-``CMakeLists.txt`` files to perform common tasks.
+by CMake, including both ones used by find_package() to find common
+software and ones that can be used directly in CMakeLists.txt files to
+perform common tasks.
 
 In addition, it provides common build settings used in software
 produced by the KDE community.
@@ -50,7 +50,6 @@ cd build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} -C build/ install \
         DESTDIR=$RPM_BUILD_ROOT
 

@@ -15,7 +15,7 @@ Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{v
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	qt5-linguist
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sphinx-pdg
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz

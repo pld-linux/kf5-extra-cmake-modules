@@ -7,7 +7,7 @@
 Summary:	Extra Cmake Modules for KF5
 Name:		kf5-%{orgname}
 Version:	1.4.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Building
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz

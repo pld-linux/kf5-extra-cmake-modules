@@ -3,15 +3,15 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.13
+%define		kdeframever	5.19
 Summary:	Extra Cmake Modules for KF5
 Name:		kf5-%{orgname}
-Version:	5.13.0
+Version:	5.19.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	26b970f7e02fd8d4b1828784f7359d18
+# Source0-md5:	c18b4e3ad6e37ce1fe372931d2b269fb
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	qt5-linguist

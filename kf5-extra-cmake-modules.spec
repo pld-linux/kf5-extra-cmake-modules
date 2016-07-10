@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests		# build without tests
+%bcond_with	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
 %define		kdeframever	5.24
@@ -14,6 +14,7 @@ Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{v
 # Source0-md5:	cd3b0c844234ad29cfdba89d63ccb2ae
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
+BuildRequires:	qt5-assistant
 BuildRequires:	qt5-linguist
 BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sphinx-pdg
@@ -51,7 +52,7 @@ cd build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build/ install \
+%{__make} -C build install \
         DESTDIR=$RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT%{_docdir}/ECM ECM-doc

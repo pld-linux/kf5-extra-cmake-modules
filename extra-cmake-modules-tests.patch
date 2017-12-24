@@ -1,0 +1,11 @@
+--- extra-cmake-modules-5.39.0/tests/ECMPoQmToolsTest/check.cmake.in.orig	2017-09-09 14:07:55.000000000 +0200
++++ extra-cmake-modules-5.39.0/tests/ECMPoQmToolsTest/check.cmake.in	2017-12-24 13:35:12.069782068 +0100
+@@ -70,7 +70,7 @@
+         foreach(lang en de fr)
+             execute_process(
+                 COMMAND "${CMAKE_COMMAND}" -E env "XDG_DATA_DIRS=${ACTUAL_TREE}/share"
+-                    LANGUAGE=${lang} "${exec}"
++                    LC_ALL=${lang} "${exec}"
+                 OUTPUT_VARIABLE output
+             )
+             string(STRIP "${output}" stripped_output)

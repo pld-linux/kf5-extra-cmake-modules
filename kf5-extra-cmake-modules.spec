@@ -3,16 +3,16 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.39
+%define		kdeframever	5.43
 Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
-Version:	5.39.0
+Version:	5.43.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	777b57222f5c23d1599b8e8774e96b73
+# Source0-md5:	b93c69609dbd2f16f9ee6302020ff5e6
 Patch0:		%{orgname}-tests.patch
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12

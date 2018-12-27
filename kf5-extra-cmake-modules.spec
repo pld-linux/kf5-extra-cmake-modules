@@ -3,20 +3,20 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.48
+%define		kdeframever	5.53
 Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
-Version:	5.48.0
+Version:	5.53.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	58c0a638cf85734c03fb5228b240182e
+# Source0-md5:	a57cf2aa488fdcce7323a2a4b9aecb65
 Patch0:		%{orgname}-tests.patch
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	qt5-assistant >= 5.5.1
+BuildRequires:	qt5-assistant >= 5.9.0
 BuildRequires:	qt5-linguist
 BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sed >= 4.0
@@ -24,13 +24,13 @@ BuildRequires:	sphinx-pdg >= 1.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with tests}
-BuildRequires:	Qt5Core-devel >= 5.5.1
-BuildRequires:	Qt5Gui-devel >= 5.5.1
-BuildRequires:	Qt5Network-devel >= 5.5.1
-BuildRequires:	Qt5Qml-devel >= 5.5.1
-BuildRequires:	Qt5Quick-devel >= 5.5.1
+BuildRequires:	Qt5Core-devel >= 5.9.0
+BuildRequires:	Qt5Gui-devel >= 5.9.0
+BuildRequires:	Qt5Network-devel >= 5.9.0
+BuildRequires:	Qt5Qml-devel >= 5.9.0
+BuildRequires:	Qt5Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:4.9
-BuildRequires:	qt5-build >= 5.5.1
+BuildRequires:	qt5-build >= 5.9.0
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

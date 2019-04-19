@@ -32,6 +32,7 @@ BuildRequires:	Qt5Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:4.9
 BuildRequires:	qt5-build >= 5.9.0
 %endif
+Obsoletes:	kf5-extra-cmake-modules-doc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

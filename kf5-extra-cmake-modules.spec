@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
         DESTDIR=$RPM_BUILD_ROOT
 
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/ECM ECM-doc
+install -d $RPM_BUILD_ROOT%{_datadir}/qlogging-categories5
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -98,4 +99,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING-CMAKE-SCRIPTS README.rst ECM-doc/*
 %{_datadir}/ECM
+%{_datadir}/qlogging-categories5
 %{_mandir}/man7/ecm*.7*

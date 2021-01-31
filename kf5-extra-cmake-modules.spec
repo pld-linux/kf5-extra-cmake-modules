@@ -33,6 +33,7 @@ BuildRequires:	libstdc++-devel >= 6:5
 BuildRequires:	qt5-build >= 5.9.0
 %endif
 Obsoletes:	kf5-extra-cmake-modules-doc
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

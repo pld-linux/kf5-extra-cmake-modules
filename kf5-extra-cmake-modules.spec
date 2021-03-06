@@ -3,17 +3,18 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.71
+%define		kdeframever	5.79
 Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
-Version:	5.71.0
+Version:	5.79.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	39590c81474016b01ce1bc29fb808c3e
+# Source0-md5:	020c6267046a065ee505c9b03d1bbe56
 Patch0:		%{orgname}-tests.patch
+Patch1:		kdefetchtranslations-test.patch
 URL:		http://www.kde.org/
 BuildRequires:	cmake >= 3.5
 BuildRequires:	qt5-assistant >= 5.9.0
@@ -66,6 +67,7 @@ dowolnych programów wykorzystujących system budowania CMake.
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p1
+%patch1 -p0
 
 # causes make install failure after running tests
 %{__sed} -i -e '/ECMToolchainAndroidTest/d' tests/CMakeLists.txt
@@ -73,8 +75,9 @@ dowolnych programów wykorzystujących system budowania CMake.
 %build
 install -d build
 cd build
-%cmake .. \
-	%{!?with_tests:-DBUILD_TESTING=OFF}
+%cmake \
+	%{!?with_tests:-DBUILD_TESTING=OFF} \
+	..
 
 %{__make}
 
@@ -89,6 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build -j1 install \
         DESTDIR=$RPM_BUILD_ROOT
+
+sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/pre-commit.in
+sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/clang-format.sh
 
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/ECM ECM-doc
 install -d $RPM_BUILD_ROOT%{_datadir}/qlogging-categories5

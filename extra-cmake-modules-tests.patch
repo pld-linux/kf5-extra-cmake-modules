@@ -1,7 +1,7 @@
---- extra-cmake-modules-5.39.0/tests/ECMPoQmToolsTest/check.cmake.in.orig	2017-09-09 14:07:55.000000000 +0200
-+++ extra-cmake-modules-5.39.0/tests/ECMPoQmToolsTest/check.cmake.in	2017-12-24 13:35:12.069782068 +0100
-@@ -70,7 +70,7 @@
-         foreach(lang en de fr)
+--- extra-cmake-modules-5.79.0/tests/ECMPoQmToolsTest/check.cmake.in.orig	2021-02-05 16:18:39.000000000 +0100
++++ extra-cmake-modules-5.79.0/tests/ECMPoQmToolsTest/check.cmake.in	2021-03-03 22:34:42.484894802 +0100
+@@ -74,7 +74,7 @@
+         foreach(lang en de de_AT fr)
              execute_process(
                  COMMAND "${CMAKE_COMMAND}" -E env "XDG_DATA_DIRS=${ACTUAL_TREE}/share"
 -                    LANGUAGE=${lang} "${exec}"

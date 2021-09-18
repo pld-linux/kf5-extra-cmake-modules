@@ -15,8 +15,8 @@ Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{
 # Source0-md5:	cee2ba8f60aa01fe0f4eb9b6304c1a5b
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
-URL:		http://www.kde.org/
-BuildRequires:	cmake >= 3.5
+URL:		https://kde.org/
+BuildRequires:	cmake >= 3.16
 BuildRequires:	qt5-assistant >= 5.9.0
 BuildRequires:	qt5-linguist
 BuildRequires:	rpmbuild(macros) >= 1.698

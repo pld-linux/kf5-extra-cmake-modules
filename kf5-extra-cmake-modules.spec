@@ -69,8 +69,8 @@ skryptach CMake'a w oprogramowaniu KDE, ma także być przydatny dla
 dowolnych programów wykorzystujących system budowania CMake.
 
 %package apidocs
-Summary:	API documentation for Python %{module} module
-Summary(pl.UTF-8):	Dokumentacja API modułu Pythona %{module}
+Summary:	API documentation for %{orgname}
+Summary(pl.UTF-8):	Dokumentacja API %{orgname}
 Group:		Documentation
 
 %description apidocs

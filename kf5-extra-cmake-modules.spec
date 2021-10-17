@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	doc		# build without doc
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
@@ -8,7 +9,7 @@ Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
 Version:	5.87.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
@@ -24,6 +25,9 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	sphinx-pdg >= 1.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+%if %{with doc}
+BuildRequires:	python3-charset_normalizer >= 2.0.0
+%endif
 %if %{with tests}
 BuildRequires:	Qt5Core-devel >= 5.9.0
 BuildRequires:	Qt5Gui-devel >= 5.9.0
@@ -64,6 +68,17 @@ O ile główną motywacją tego modułu jest zmniejszenie duplikacji w
 skryptach CMake'a w oprogramowaniu KDE, ma także być przydatny dla
 dowolnych programów wykorzystujących system budowania CMake.
 
+%package apidocs
+Summary:	API documentation for Python %{module} module
+Summary(pl.UTF-8):	Dokumentacja API modułu Pythona %{module}
+Group:		Documentation
+
+%description apidocs
+API documentation for %{orgname}.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API dla %{orgname}.
+
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p1
@@ -77,6 +92,7 @@ install -d build
 cd build
 %cmake \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
+	%{!?with_doc:-DBUILD_HTML_DOCS=OFF} \
 	..
 
 %{__make}
@@ -96,7 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/pre-commit.in
 sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/clang-format.sh
 
+%if %{with doc}
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/ECM ECM-doc
+%endif
 install -d $RPM_BUILD_ROOT%{_datadir}/qlogging-categories5
 
 %clean
@@ -104,7 +122,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING-CMAKE-SCRIPTS README.rst ECM-doc/*
+%doc COPYING-CMAKE-SCRIPTS README.rst
 %{_datadir}/ECM
 %{_datadir}/qlogging-categories5
 %{_mandir}/man7/ecm*.7*
+
+%if %{with doc}
+%files apidocs
+%defattr(644,root,root,755)
+%doc ECM-doc/html/*
+%endif

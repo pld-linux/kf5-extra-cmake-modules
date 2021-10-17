@@ -20,14 +20,12 @@ URL:		https://kde.org/
 BuildRequires:	cmake >= 3.16
 BuildRequires:	qt5-assistant >= 5.9.0
 BuildRequires:	qt5-linguist
+BuildRequires:	python3-charset_normalizer >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sed >= 4.0
 BuildRequires:	sphinx-pdg >= 1.2
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-%if %{with doc}
-BuildRequires:	python3-charset_normalizer >= 2.0.0
-%endif
 %if %{with tests}
 BuildRequires:	Qt5Core-devel >= 5.9.0
 BuildRequires:	Qt5Gui-devel >= 5.9.0

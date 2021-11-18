@@ -20,10 +20,9 @@ URL:		https://kde.org/
 BuildRequires:	cmake >= 3.16
 BuildRequires:	qt5-assistant >= 5.9.0
 BuildRequires:	qt5-linguist
-BuildRequires:	python3-charset_normalizer >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sed >= 4.0
-BuildRequires:	sphinx-pdg >= 1.2
+%{?with_doc:BuildRequires:	sphinx-pdg >= 1.2}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with tests}
@@ -35,7 +34,6 @@ BuildRequires:	Qt5Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:5
 BuildRequires:	qt5-build >= 5.9.0
 %endif
-Obsoletes:	kf5-extra-cmake-modules-doc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,6 +68,7 @@ dowolnych programów wykorzystujących system budowania CMake.
 Summary:	API documentation for %{orgname}
 Summary(pl.UTF-8):	Dokumentacja API %{orgname}
 Group:		Documentation
+Obsoletes:	kf5-extra-cmake-modules-doc < 1.4.0
 
 %description apidocs
 API documentation for %{orgname}.

@@ -97,7 +97,7 @@ cd build
 %if %{with tests}
 # GenerateSipBindings wants clang and has libclang checks incompatible with libclang >= 4
 # ECMPoQmToolsTest fails to build it's own moc file
-ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)'
+ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
 %endif
 
 %install

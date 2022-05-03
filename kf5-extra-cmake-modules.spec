@@ -27,13 +27,10 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with tests}
 BuildRequires:	Qt5Core-devel >= 5.9.0
-BuildRequires:	Qt5Gui-devel >= 5.9.0
-BuildRequires:	Qt5Network-devel >= 5.9.0
-BuildRequires:	Qt5Qml-devel >= 5.9.0
 BuildRequires:	Qt5Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:5
-BuildRequires:	qt5-build >= 5.9.0
 %endif
+BuildConflicts:	qmake
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

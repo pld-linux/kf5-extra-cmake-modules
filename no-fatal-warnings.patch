@@ -1,0 +1,14 @@
+diff -up extra-cmake-modules-5.97.0/kde-modules/KDECompilerSettings.cmake.dd extra-cmake-modules-5.97.0/kde-modules/KDECompilerSettings.cmake
+--- extra-cmake-modules-5.97.0/kde-modules/KDECompilerSettings.cmake.dd	2022-07-15 16:05:38.000000000 +0200
++++ extra-cmake-modules-5.97.0/kde-modules/KDECompilerSettings.cmake	2022-08-16 11:33:34.681624244 +0200
+@@ -537,8 +537,8 @@ if ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU
+         (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT APPLE) OR
+         (CMAKE_CXX_COMPILER_ID STREQUAL "Intel" AND NOT WIN32))
+     # Linker warnings should be treated as errors
+-    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
+-    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
++    ##set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
++    ##set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
+ 
+     # Do not allow undefined symbols, even in non-symbolic shared libraries
+     # On OpenBSD we must disable this to allow the stuff to properly compile without explicit libc specification

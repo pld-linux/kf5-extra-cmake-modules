@@ -9,13 +9,14 @@ Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
 Version:	5.97.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
 # Source0-md5:	9004ad7e58f5d3ef4a68ac9d3d432c51
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
+Patch2:		no-fatal-warnings.patch
 URL:		https://kde.org/
 BuildRequires:	cmake >= 3.16
 BuildRequires:	qt5-assistant >= 5.9.0
@@ -77,6 +78,7 @@ Dokumentacja API dla %{orgname}.
 %setup -q -n %{orgname}-%{version}
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
 
 # causes make install failure after running tests
 %{__sed} -i -e '/ECMToolchainAndroidTest/d' tests/CMakeLists.txt

@@ -4,16 +4,16 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.108
+%define		kdeframever	5.109
 Summary:	Extra Cmake Modules for KF5
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
 Name:		kf5-%{orgname}
-Version:	5.108.0
+Version:	5.109.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	9ea3c05480cd32f13b3d0c75441a9513
+# Source0-md5:	0baf0a3ded2fed5e0442591dde276c4e
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
@@ -84,19 +84,16 @@ Dokumentacja API dla %{orgname}.
 %{__sed} -i -e '/ECMToolchainAndroidTest/d' tests/CMakeLists.txt
 
 %build
-install -d build
-cd build
-%cmake \
+%cmake -B build \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
-	%{!?with_doc:-DBUILD_HTML_DOCS=OFF} \
-	..
+	%{!?with_doc:-DBUILD_HTML_DOCS=OFF}
 
-%{__make}
+%{__make} -C build
 
 %if %{with tests}
 # GenerateSipBindings wants clang and has libclang checks incompatible with libclang >= 4
 # ECMPoQmToolsTest fails to build it's own moc file
-ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
+ctest --build-run-dir build -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
 %endif
 
 %install

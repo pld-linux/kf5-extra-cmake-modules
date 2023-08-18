@@ -93,7 +93,8 @@ Dokumentacja API dla %{orgname}.
 %if %{with tests}
 # GenerateSipBindings wants clang and has libclang checks incompatible with libclang >= 4
 # ECMPoQmToolsTest fails to build it's own moc file
-ctest --build-run-dir build -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
+cd build
+ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
 %endif
 
 %install

@@ -4,16 +4,16 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	5.114
-Summary:	Extra Cmake Modules for KF5
-Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5
+%define		kdeframever	5.249.0
+Summary:	Extra Cmake Modules for KF6
+Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF6
 Name:		kf5-%{orgname}
-Version:	5.114.0
-Release:	1
+Version:	5.249.0
+Release:	0.1
 License:	BSD
 Group:		Development/Building
-Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	475f189080f5d249de3f53d1aece9416
+Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
+# Source0-md5:	e8cd307af19777f5ef99edf8e713387b
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
@@ -27,8 +27,8 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with tests}
-BuildRequires:	Qt5Core-devel >= 5.9.0
-BuildRequires:	Qt5Quick-devel >= 5.9.0
+BuildRequires:	Qt6Core-devel >= 5.9.0
+BuildRequires:	Qt6Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:5
 %endif
 BuildConflicts:	qmake
@@ -109,7 +109,7 @@ sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-mo
 %if %{with doc}
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/ECM ECM-doc
 %endif
-install -d $RPM_BUILD_ROOT%{_datadir}/qlogging-categories5
+install -d $RPM_BUILD_ROOT%{_datadir}/qlogging-categories6
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -118,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING-CMAKE-SCRIPTS README.rst
 %{_datadir}/ECM
-%{_datadir}/qlogging-categories5
+%{_datadir}/qlogging-categories6
 %{_mandir}/man7/ecm*.7*
 
 %if %{with doc}
